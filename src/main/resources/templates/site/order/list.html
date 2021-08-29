@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/site/layout::areas(~{::title},~{::body})}">
+
+<head>
+    <title>Lịch sử đơn hàng | ColorMarket</title>
+
+</head>
+
+<body>
+    <div class="container" style="margin-top: 150px;">
+        <h2 class="mb-5 mt-5 pt-3 text-center">Lịch sử đơn hàng</h2>
+        <div class="table-responsive">
+            <table class="table custom-table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col">
+                            <label class="control control--checkbox">
+                                <input type="checkbox" class="js-check-all" />
+                                <div class="control__indicator"></div>
+                            </label>
+                        </th> -->
+                        <th scope="col">STT</th>
+                        <th scope="col">Mã đơn hàng</th>
+                        <th scope="col">Ngày đặt hàng</th>
+                        <th scope="col">Địa chỉ giao hàng</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="order,state : ${orders}">
+                        <!-- <th scope="row">
+                            <label class="control control--checkbox">
+                                <input type="checkbox" />
+                                <div class="control__indicator"></div>
+                            </label>
+                        </th> -->
+                        <td scope="row">
+                            [[${state.index}]]
+                        </td>
+                        <td>[[${order.id}]]</td>
+                        <!-- <td>
+                            Web Designer
+                            <small class="d-block">Far far away, behind the word mountains</small>
+                        </td> -->
+                        <td>[[${order.createDate}]]</td>
+                        <td>[[${order.address}]]</td>
+                        <td>
+                            <a th:href="@{|/order/detail/${order.id}|}" class="btn btn-default">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    <link rel="stylesheet" th:href="@{/assets/pay/fonts/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/pay/owl.carousel.min.css}">
+    </div>
+</body>
+
+</html>

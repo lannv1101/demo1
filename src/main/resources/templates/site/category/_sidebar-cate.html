@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+</head>
+
+<body>
+    <div class="sidebar" th:fragment="sidebar">
+        <div class=" sidebar_section">
+            <div class="sidebar_title">
+                <h5>Loại sản phẩm</h5>
+            </div>
+            <ul class="sidebar_categories">
+                <li th:each=" c: ${categories}"><a
+                        th:href="@{|/color/product/list/search/paginated?cid=${c.id}|}">[[${c.name}]]</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

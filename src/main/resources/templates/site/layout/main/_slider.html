@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="slider">
+        <div class="main_slider" style="background-image:url('/images/background.jpeg')">
+            <div class="container fill_height">
+                <div class="row align-items-center fill_height">
+                    <div class="col">
+                        <div class="main_slider_content">
+                            <h6 class="text-white">Thương hiệu nông sản khẳng định giá trị Việt</h6>
+                            <h1 class="text-white">Giảm giá tới 30% cho hàng mới về</h1>
+                            <div class="red_button shop_now_button"><a th:href="@{/color/product/list}">shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

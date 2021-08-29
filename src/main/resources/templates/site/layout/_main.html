@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/site/layout::areas(~{::title},~{::body})}">
+
+<head>
+    <title>Trang chủ | Color Market</title>
+</head>
+
+<body>
+    <!-- Slider -->
+    <div th:insert="~{/site/layout/main/_slider.html::slider}"></div>
+
+
+    <!-- Banner -->
+    <div th:insert="~{/site/layout/main/_banner.html::banner}"></div>
+
+
+    <!-- New Arrivals -->
+    <div th:insert="~{/site/layout/main/_new-arrivals.html::new-arrivals}"></div>
+
+    <!-- Deal of the week -->
+    <div th:insert="~{/site/layout/main/_deal_ofthe_week::deal_ofthe_week}"></div>
+
+    <!-- Best Sellers -->
+
+    <div th:insert="~{/site/layout/main/_best-sellers::best-sellers}"></div>
+
+    <!-- Benefit -->
+
+    <div th:insert="~{/site/layout/main/_benefit.html::benefit}"></div>
+
+    <!-- Blogs -->
+
+    <div th:insert="~{/site/layout/main/_blogs.html::blogs}"></div>
+
+    <!-- Newsletter -->
+
+    <div th:insert="~{/site/layout/main/_newsletter.html::newsletter}"></div>
+
+</body>
+
+</html>

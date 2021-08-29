@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Sign Up Form by Colorlib</title>
+    <!-- Font Icon -->
+    <link rel="stylesheet" th:href="@{/login/fonts/material-design-iconic-font.min.css}">
+    <!-- Main css -->
+    <link rel="stylesheet" th:href="@{/login/style.css}">
+    <link th:href="@{/plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"> -->
+</head>
+
+<body style="background-image: url('/images/background9.jpeg');">
+
+    <div class="main">
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+
+                    <div class="signin-image">
+                        <figure><img th:src="@{/login/images/signin-image.jpg}" alt="sing up image"></figure>
+                        <a th:href="@{/site/account/register}" class="signup-image-link">Tạo tài khoản</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <div class="breadcrumbs d-flex flex-row align-items-center">
+                            <a style="text-decoration: none; font-size: large;" th:href="@{/color/home}"><i
+                                    class="fa fa-angle-double-left"></i> Trang chủ</a>
+                        </div>
+                        <h2 class="form-title">Đăng nhập</h2>
+                        <form method="POST" th:action="@{/security/login}" class="register-form" id="login-form">
+                            <h4 th:text="${message}" style="color: red;"></h4>
+                            <div class="form-group">
+                                <label for="your_name"><i class="fa fa-user material-icons-name" aria-hidden="true"></i>
+                                    <!-- <i class="zmdi zmdi-account material-icons-name"></i> -->
+                                </label>
+                                <input type="text" name="username" id="your_name" placeholder="Tên đăng nhập" />
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="fa fa-lock" aria-hidden="true"></i></label>
+                                <input type="password" name="password" id="your_pass" placeholder="Mật khẩu" />
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember
+                                    me</label>
+                                <label for="remember-me" class="label-agree-term" style="float: right; "><a
+                                        style="text-decoration: none;" th:href="@{/color/forgot_password}">Quên mật
+                                        khẩu</a></label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                            </div>
+                        </form>
+                        <div class="social-login">
+                            <span class="social-label">Hoặc đăng nhập với</span>
+                            <ul class="socials">
+                                <li><a href="/oauth2/authorization/google"><i class="display-flex-center fa fa-facebook"
+                                            aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center fa fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                                <li><a href="#"><i class="display-flex-center fa fa-google" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JS -->
+    <script th:src="@{/assets/jquery.min.js}"></script>
+    <script th:src="@{/login/main.js}"></script>
+</body>
+
+</html>

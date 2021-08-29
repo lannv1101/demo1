@@ -1,0 +1,88 @@
+<main>
+    <div class="container-fluild rounded bg-white" style="margin-top:30px">
+        <div class="container">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="d-flex flex-row">
+                            <h5><span class="fa fa-check-square-o"></span><b>THÔNG TIN CHI TIẾT ĐẶT HÀNGN</b> | </h5>
+                            <span class="pl-2">Pay</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Print
+                                bill</span></a>
+                        <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i> <span>Export
+                                to
+                                Excel</span></a>
+                        <a href="#!order" class="btn btn-secondary"><i class="fa fa-angle-left"></i>
+                            <span>Trang trước</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center  p-2">
+                <div class="col-md-10 col-lg-12">
+                    <h4 class="green">Tổng tiền : {{getTotal()|number}}VND</h4>
+                    <div class="result-body">
+                        <div class="table-responsive">
+                            <div class="bg-light rounded d-flex flex-column">
+                                <table class="table widget-26">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                Hình ảnh
+                                            </th>
+                                            <th scope="col">Tên sản phẩm</th>
+                                            <th scope="col">Gía</th>
+                                            <th scope="col">Giảm giá</th>
+                                            <th scope="col">Số lượng</th>
+                                            <th scope="col">Tổng tiền</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in pager.items">
+                                            <td>
+                                                <div class="widget-26-job-emp-img">
+                                                    <img src="/assets/user/{{item.account.photo}}" alt="Company" />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="widget-26-job-title">
+                                                    <a href="#">{{item.id}}</a>
+                                                    <p class="m-0"><a href="#"
+                                                            class="employer-name">{{item.product.name}}</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="widget-26-job-salary">
+                                                    {{item.price}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="widget-26-job-salary">
+                                                    {{item.product.discount}}%
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="widget-26-job-category">
+                                                    {{item.quantity}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="widget-26-job-category bg-soft-base">
+                                                    <i class="indicator bg-base"></i>
+                                                    <span>{{(item.price-(item.price*item.product.discount*0.01))*item.quantity|number}}VND</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+<link rel="stylesheet" href="../../assets/pay/pay.css">

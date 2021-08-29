@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>Sign Up Form by ColorMarket</title>
+    <!-- Font Icon -->
+    <link rel="stylesheet" th:href="@{/login/fonts/material-design-iconic-font.min.css}">
+    <!-- Main css -->
+    <link rel="stylesheet" th:href="@{/login/style.css}">
+    <link href="../static/images/logo.png" th:href="@{/images/logo.png}" rel="icon" type="image/x-icon" />
+    <!-- <link rel="stylesheet" th:href="@{/styles/categories_styles.css}"> -->
+    <link th:href="@{/plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
+</head>
+
+<body style="background-image: url('/images/background10.jpeg');">
+
+    <div class="main">
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <div class="breadcrumbs d-flex flex-row align-items-center">
+                            <a style="text-decoration: none; font-size: large;" th:href="@{/color/home}"><i
+                                    class="fas fa-angle-double-left"></i> Trang chủ</a>
+                        </div>
+                        <h2 class="form-title">Tạo tài khoản</h2>
+                        <form method="POST" th:action="@{/site/account/save}" id="register-form" th:object="${account}">
+                            <h5>[[${error}]]</h5>
+                            <div class="form-group">
+                                <label for="name"><i class="fas fa-user"></i></label>
+                                <input type="text" th:field="*{username}" name="name" id="name"
+                                    placeholder="Tên đăng nhập" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i></label>
+                                <input type="email" th:field="*{email}" name="email" id="email"
+                                    placeholder="Your Email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="fas fa-lock"></i></label>
+                                <input type="password" th:field="*{password}" name="pass" id="pass"
+                                    placeholder="Mật khẩu" />
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="fas fa-user-lock"></i></label>
+                                <input type="text" th:field="*{fullname}" name="re_pass" id="re_pass"
+                                    placeholder="Họ và tên" />
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>Tôi đồng ý
+                                    tất cả tuyên bố trong <a href="#" class="term-service">Điều khoản dịch
+                                        vụ</a></label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng ký" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img th:src="@{/login/images/signup-image.jpg}" alt="sing up image"></figure>
+                        <a href="#" class="signup-image-link">Tôi đã là thành viên</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script th:src="@{/assets/jquery.min.js}"></script>
+    <script th:src="@{/login/main.js}"></script>
+</body>
+
+</html>

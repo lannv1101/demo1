@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{/site/layout::areas(~{::title},~{::body})}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.82.0">
+    <title>Checkout example · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body class="bg-light">
+    <link th:href="@{/styles/bootstrap4/form-validation.css}" rel="stylesheet">
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72"
+                    height="57">
+                <h2>Đặt hàng thanh toán</h2>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-md-6 offset-md-3">
+                    <div class="ibox-content">
+                        <a class="btn btn-white" th:href="@{/color/product/list}"><i class="fa fa-arrow-left"></i>
+                            Tiếp tục mua sắm</a>
+                    </div>
+                    <h4 class="mb-3">Địa chỉ thanh toán</h4>
+                    <form>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationServer01">Tên đăng nhập</label>
+                                <div class="form-control" id="username">[[${#request.remoteUser}]]</div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationServer02">Ngày đặt hàng:</label>
+                                <div class="form-control">{{order.createDate|date:'dd-MM-yyyy'}}</div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Địa chỉ giao hàng</span>
+                            </div>
+                            <textarea class="form-control" ng-model="order.address"
+                                aria-label="With textarea"></textarea>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary third" ng-click="order.purchase()"
+                            type="submit">Đặt hàng</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script th:src="@{/styles/bootstrap4/form-validation.js}"></script>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        
+    </style>
+    <script>
+        document.querySelector(".third").addEventListener('click', function(){
+        Swal.fire("Our First Alert", "With some body text and success icon!", "success");
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+</body>
+
+</html>

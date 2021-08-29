@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{/site/layout::areas(~{::title},~{::body})}">
+
+<head>
+
+  <title>About Us | Color Market</title>
+
+</head>
+
+<body class="d-flex h-100 text-center text-white bg-dark"
+  style="margin-top:150px;background-image: url('/images/background12.jpeg');">
+
+  <div class=" cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <main class=" px-3">
+      <h1 class="text-white">Sản phẩm môn học của Hồng Hiếu</h1>
+      <p class="lead">Nhằm cung cấp những giải pháp mua hàng Online hiệu quả và kịp thời nhất, Color Market tự hào gửi
+        đến quý khách hàng dịch vụ thiết kế website trọn gói, chuyên nghiệp, tích hợp nhiều chức năng độc đáo để website
+        có thể hoạt động mượt mà trên nhiều nền tảng web đồng thời mang về hiệu quả tối ưu nhất cho khách hàng.</p>
+    </main>
+  </div>
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link th:href="@{/assets/css/cover.css}" rel="stylesheet">
+</body>
+
+</html>

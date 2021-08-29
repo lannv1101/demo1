@@ -1,0 +1,236 @@
+<main>
+    <div class="row g-5">
+        <div class="col-md-6 col-lg-5 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Loại sản phẩm</span>
+            </h4>
+            <form action="" method="post" class="m-2" name="cateForm">
+                <div class="p-2" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item justify-content-between lh-sm">
+                            <div class="form-group">
+                                <label for="">ID</label>
+                                <input type="text" name="id" ng-model="form.id" class="form-control" name="" id=""
+                                    aria-describedby="helpId" ng-pattern="/^[0-9]{1,7}$/" required>
+                                <small class="form-text" ng-show="cateForm.id.$error.required"
+                                    style="color:rgb(238, 69, 69)">
+                                    Không được để trống id loại sản phẩm.
+                                </small>
+                                <small class="form-text" ng-show="cateForm.id.$dirty&&cateForm.id.$error.pattern"
+                                    style="color:rgb(238, 69, 69)">
+                                    Định dạng id phải là dạng số và nhỏ hơn 8 kí tự.
+                                </small>
+                            </div>
+
+
+                        </li>
+                        <li class="list-group-item  justify-content-between lh-sm">
+                            <div class="form-group">
+                                <label for="">Tên loại sản phẩm</label>
+                                <input type="text" ng-model="form.name" name="name" class="form-control" name="" id=""
+                                    aria-describedby="helpId" required>
+                                <small class="form-text" ng-show="cateForm.name.$error.required"
+                                    style="color:rgb(238, 69, 69)">
+                                    Không được để trống tên loại sản phẩm.
+                                </small>
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" ng-click="create()" id="btn" class="btn mb-2 mb-md-0 btn-primary btn-sm">
+                        <i class="fas fa-cloud-download-alt"></i>
+                        Save
+                    </button>
+                    <button type="button" ng-click="update()" id="btn" class="btn mb-2 mb-md-0 btn-tertiary btn-sm">
+                        <i class="far fa-arrow-alt-circle-up"></i> Update
+                    </button>
+                    <button type="button" ng-click="reset()" id="btn" class="btn mb-2 mb-md-0 btn-fb btn-sm">
+                        <i class="fas fa-undo-alt"></i> Reset
+                    </button>
+                    <button type="button" ng-click="delete(form)" id="btn"
+                        class="btn mb-2 mb-md-0 btn-pinterest btn-sm">
+                        <i class="fas fa-minus-circle"></i> Delete
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 col-lg-7">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 card-margin">
+                        <div class="card search-form">
+                            <div class="card-body p-0">
+                                <form id="search-form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="row no-gutters">
+                                                <div class="col-lg-11 col-md-9 col-sm-12 p-0">
+                                                    <input type="text" placeholder="Nhập tên loại sản phẩm cần tìm"
+                                                        class="form-control" id="search" name="search"
+                                                        ng-model="searchName">
+                                                </div>
+                                                <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                                                    <button type="submit" class="btn btn-base">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" class="feather feather-search">
+                                                            <circle cx="11" cy="11" r="8"></circle>
+                                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-margin">
+                            <div class="card-body">
+                                <div class="row search-body">
+                                    <div class="col-lg-12">
+                                        <div class="search-result">
+                                            <div class="result-header">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="records">Showing: <b>{{pager.page+1}}</b> of
+                                                            <b>{{pager.count}}</b> pager
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="result-actions">
+                                                            <div class="result-sorting">
+                                                                <span>Sort By:</span>
+                                                                <select class="form-control border-0"
+                                                                    id="exampleOption">
+                                                                    <option value="1">Relevance</option>
+                                                                    <option value="2">Names (A-Z)</option>
+                                                                    <option value="3">Names (Z-A)</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="result-views">
+                                                                <button type="button"
+                                                                    class="btn btn-soft-base btn-icon">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-list">
+                                                                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                                                                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                                                                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                                                                        <line x1="3" y1="6" x2="3" y2="6"></line>
+                                                                        <line x1="3" y1="12" x2="3" y2="12"></line>
+                                                                        <line x1="3" y1="18" x2="3" y2="18"></line>
+                                                                    </svg>
+                                                                </button>
+                                                                <button type="button"
+                                                                    class="btn btn-soft-base btn-icon">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-grid">
+                                                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                                                    </svg>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="result-body">
+                                                <div class="table-responsive">
+                                                    <table class="table widget-26">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">
+                                                                    Mã
+                                                                </th>
+                                                                <th scope="col">Tên</th>
+                                                                <th scope="col"></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr
+                                                                ng-repeat="item in pager.items|orderBy:sortType:sortReserve|filter:searchName">
+
+                                                                <th scope="row">
+
+                                                                    {{item.id}}
+
+                                                                </th>
+                                                                <td>
+                                                                    <div class="widget-26-job-info">
+                                                                        <p class="type m-0">{{item.name}}</p>
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <div class="widget-26-job-starred">
+                                                                        <a ng-click="edit(item)">
+                                                                            <i class="fas fa-pen"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <nav class="d-flex justify-content-center">
+                                    <ul class="pagination pagination-base pagination-boxed pagination-square mb-0">
+                                        <li class="page-item">
+                                            <a class="page-link no-border" ng-click="pager.first()">
+                                                <span aria-hidden="true">«</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link no-border"
+                                                ng-click="pager.prev()">Prev</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link no-border">{{pager.page+1}} of
+                                                {{pager.count}}</a></li>
+
+                                        <li class="page-item">
+                                            <a class="page-link no-border" ng-click="pager.next()">
+                                                Next
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link no-border" ng-click="pager.last()">
+                                                <span aria-hidden="true">»</span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<style>
+    input.ng-valid {
+        border-color: rgb(26, 104, 26);
+
+    }
+
+    input.ng-invalid {
+        border-color: rgb(238, 69, 69);
+
+    }
+</style>

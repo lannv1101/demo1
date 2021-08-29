@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+</head>
+
+<body>
+    <div th:fragment="banner">
+        <div class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4" th:each="item : ${top3}">
+                        <div class="banner_item align-items-center"
+                            style="background-image:url('/images/background11.jpeg')">
+                            <div class="banner_category">
+                                <a
+                                    th:href="@{|/color/product/list/search/paginated?cid=${item.id}|}">[[${item.name}]]</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <div class="banner_item align-items-center"
+                            style="background-image:url('/images/background7.jpeg')">
+                            <div class="banner_category">
+                                <a href="categories.html">Rau củ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="banner_item align-items-center"
+                            style="background-image:url('/images/background8.jpeg')">
+                            <div class="banner_category">
+                                <a href="categories.html">Thực phẩm khô</a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+ <form class="needs-validation m-5 p-3" name="accountForm" novalidate multiple
+     style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">
+     <div class="row g-3">
+         <div class="col-md-5 col-lg-4 order-md-last">
+             <div class="col-sm text-center">
+                 <img ng-hide="flag==1" ng-src="/assets/users/{{form.photo}}" alt="" width="200px" height="200px" />
+                 <img ng-show="flag==1" ng-src="/assets/users/{{form.account.photo}}" alt="" width="200px"
+                     height="200px" />
+             </div>
+             <div class="col-sm">
+                 <label for="lastName" class="form-label">Image :</label>
+                 <input type="file" onchange="angular.element(this).scope().imageChanged(this.files)"
+                     class="form-control" required width="200px" height="200px">
+             </div>
+         </div>
+         <div class="col-md-7 col-lg-8">
+             <div class="col-sm-12 mt-4">
+                 <label for="firstName" class="form-label">Tên đăng nhập</label>
+                 <input type="text" ng-hide="flag==1" ng-model="form.username" name="username" class="form-control"
+                     id="firstName" required>
+                 <input type="text" ng-show="flag==1" ng-model="form.account.username" name="username1"
+                     class="form-control" id="firstName" required>
+                 <small class="form-text" ng-if="flag!=1" ng-show="accountForm.username.$touched && accountForm.username.$invalid
+                     ||accountForm.username.$error.required" style="color:rgb(238, 69, 69)">
+                     Không được để trống tên người dùng.
+                 </small>
+                 <small class="form-text" ng-if="flag==1" ng-show="accountForm.username1.$touched &&
+                     accountForm.username1.$invalid||accountForm.username1.$error.required"
+                     style="color:rgb(238, 69, 69)">
+                     Không được để trống tên người dùng.
+                 </small>
+             </div>
+
+             <div class="col-sm-12 mt-4">
+                 <label for="lastName" class="form-label">Họ & tên</label>
+                 <input type="text" ng-hide="flag==1" ng-model="form.fullname" name=fullname class="form-control"
+                     id="lastName" required>
+                 <input type="text" ng-show="flag==1" ng-model="form.account.fullname" name=fullname1
+                     class="form-control" id="lastName" required>
+                 <small class="form-text" ng-if="flag!=1" ng-show="accountForm.fullname.$error.required ||
+                     accountForm.fullname.$touched && accountForm.fullname.$invalid" style="color:rgb(238, 69, 69)">
+                     Không được để trống họ và tên.
+                 </small>
+                 <small class="form-text" ng-if="flag==1" ng-show="accountForm.fullname1.$error.required ||
+                     accountForm.fullname1.$touched && accountForm.fullname1.$invalid" style="color:rgb(238, 69, 69)">
+                     Không được để trống họ và tên.
+                 </small>
+             </div>
+
+             <div class="col-sm-12 mt-4">
+                 <label for="username" class="form-label">Email</label>
+                 <input type="text" ng-hide="flag==1" ng-model="form.email" name="email" class="form-control"
+                     id="username" placeholder="a@example.com" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+                 <input type="text" ng-show="flag==1" ng-model="form.account.email" name="email1" class="form-control"
+                     id="username" placeholder="a@example.com" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+                 <small class="form-text" ng-if="flag!=1" ng-show="accountForm.email.$error.required"
+                     style="color:rgb(238, 69, 69)">
+                     Không được để trống email.
+                 </small>
+                 <small class="form-text" ng-if="flag==1" ng-show="accountForm.email1.$error.required"
+                     style="color:rgb(238, 69, 69)">
+                     Không được để trống email.
+                 </small>
+                 <small class="form-text" ng-if="flag!=1"
+                     ng-show="accountForm.email.$dirty&&accountForm.email.$error.pattern">
+                     Định dạng email không hợp lệ.
+                 </small>
+                 <small class="form-text" ng-if="flag==1"
+                     ng-show="accountForm.email1.$dirty&&accountForm.email1.$error.pattern">
+                     Định dạng email không hợp lệ.
+                 </small>
+             </div>
+             <!-- <div class="col-sm-12 mt-4">
+                 <label for="lastName" class="form-label">Password</label>
+                 <input type="password" ng-hide="flag==1" ng-model="form.password" name="password" class="form-control"
+                     required disabled>
+                 <input type="password" ng-show="flag==1" ng-model="form.account.password" name="password1"
+                     class="form-control" required disabled>
+                 <small class="form-text" ng-if="flag!=1" ng-show="accountForm.password.$error.required"
+                     style="color:rgb(238, 69, 69)">
+                     Không được để trống password.
+                 </small>
+                 <small class="form-text" ng-if="flag==1" ng-show="accountForm.password1.$error.required"
+                     style="color:rgb(238, 69, 69)">
+                     Không được để trống password.
+                 </small>
+             </div> -->
+             <div class="col-12 mt-4 mt-4">
+                 <!-- <a ng-click="create()" class="btn btn-info btn-sm"><i class="material-icons">&#xE147;</i> <span>Save
+                     </span></a> -->
+                 <a ng-click="delete(form)" ng-show="flag!=1" class="btn btn-danger btn-sm"><i
+                         class="material-icons">&#xE24D;</i>
+                     <span>Delete</span></a>
+                 <a ng-click="delete1(form.account)" ng-show="flag==1" class="btn btn-danger btn-sm"><i
+                         class="material-icons">&#xE24D;</i>
+                     <span>Delete</span></a>
+                 <a ng-click="update()" ng-show="flag!=1" class="btn btn-success btn-sm"><i
+                         class="material-icons">&#xE147;</i>
+                     <span>Update</span></a>
+                 <a ng-click="update1()" ng-show="flag==1" class="btn btn-success btn-sm"><i
+                         class="material-icons">&#xE147;</i>
+                     <span>Update1</span></a>
+                 <a ng-click="reset()" ng-show="flag!=1" class="btn btn-secondary btn-sm"><i
+                         class="material-icons">&#xE24D;</i>
+                     <span>Reset</span></a>
+                 <a ng-click="reset1()" ng-show="flag==1" class="btn btn-secondary btn-sm"><i
+                         class="material-icons">&#xE24D;</i>
+                     <span>Reset</span></a>
+             </div>
+         </div>
+     </div>
+ </form>
+ <style>
+     input.ng-valid {
+         border-color: rgb(26, 104, 26);
+
+     }
+
+     input.ng-invalid {
+         border-color: rgb(238, 69, 69);
+
+     }
+ </style>

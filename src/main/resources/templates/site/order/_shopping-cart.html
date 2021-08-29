@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/site/layout::areas(~{::title},~{::body})}">
+
+<head>
+
+    <title>Your shopping cart</title>
+
+</head>
+
+<body>
+    <div class="container" style="margin-top: 150px;">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <span class="pull-right">(<strong>{{cart.count}}</strong>) mặt hàng</span>
+                            <h5>Mặt hàng của bạn</h5>
+                            <a ng-click="cart.clear()" class="text-muted text-danger"><i class="fa fa-trash"></i> Xóa
+                                tất cả</a>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <table class="table shoping-cart-table">
+                                    <tbody>
+                                        <tr ng-repeat="item in cart.items">
+                                            <td width="90">
+
+                                                <img src="/assets/images/{{item.image}}" alt="" width="90px"
+                                                    height="90px">
+
+                                            </td>
+                                            <td class="desc">
+                                                <h3>
+                                                    <a href="#" class="text-navy">
+                                                        {{item.id}}
+                                                    </a>
+                                                </h3>
+                                                <p>
+                                                    {{item.name}}
+                                                </p>
+                                                <!-- <dl class="small m-b-none">
+                                                    <dt>Description lists</dt>
+                                                    <dd>A description list is perfect for defining terms.</dd>
+                                                </dl> -->
+
+                                                <div class="m-t-sm">
+                                                    <!-- <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add
+                                                        gift package</a>
+                                                    | -->
+                                                    <button ng-click="cart.remove(item.id)"
+                                                        class="btn btn btn-danger btn-sm text-white">
+                                                        <i class="fas fa-minus-circle"></i>
+                                                        Xóa</button>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                ${{item.price|number}}
+                                                <s class="small text-muted">$230,00</s>
+                                            </td>
+                                            <td width="100">
+                                                <input type="number" ng-change="cart.saveToLocalStorage()"
+                                                    ng-model="item.qty" min="1" class="form-control" placeholder="1">
+                                            </td>
+                                            <td>
+                                                <h4>
+                                                    ${{item.qty*item.price|number}}
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="ibox-content">
+                            <a class="btn btn-white" th:href="@{/color/product/list}"><i class="fa fa-arrow-left"></i>
+                                Tiếp tục mua sắm</a>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5> Total</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h2 class="font-bold">
+                                {{cart.amount|number:0}}
+                            </h2>
+                            <hr>
+                            <span class="text-muted small">
+                                Bạn có thể đặt hàng tại đây
+                            </span>
+                            <div class="m-t-sm">
+                                <div class="btn-group">
+                                    <a th:href="@{/order/checkout}" class="btn btn-success">Thủ tục thanh toán</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" th:href="@{/styles/responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/cart/shopping-cart.css}">
+</body>
+
+</html>

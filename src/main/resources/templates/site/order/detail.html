@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/site/layout::areas(~{::title},~{::body})}">
+
+<head>
+
+    <title>Your checkout cart</title>
+
+</head>
+
+<body>
+    <main th:object="${order}">
+        <div class="container rounded bg-white" style="margin-top: 150px;">
+            <div class="row d-flex justify-content-center pb-5">
+                <div class="col-sm-5 col-md-5 ml-1">
+
+                    <div class="py-4 d-flex flex-row">
+                        <h5><span class="fa fa-check-square-o"></span><b>THÔNG TIN ĐẶT HÀNG</b> | </h5><span
+                            class="pl-2">Thanh toán</span>
+                    </div>
+                    <h4 class="green">TỔNG TIỀN: {{cart.amount|number:0}}</h4>
+                    <div th:each=" detail: *{orderDetails}" th:object="${detail}">
+                        <h4>[[*{product.name}]]</h4>
+                        <div class="d-flex pt-2">
+                            <div class="mr-1">
+                                <img src="/assets/images/*{{product.image}}" alt="" width="90px" height="90px">
+                            </div>
+                            <div>
+                                <p><b>Quantity : [[*{quantity}]]</b></p>
+                                <!-- <span class="green">$[[*{#numbers.formatDecimal(price,0,'COMMA',2,'POINT')}]]</span> -->
+                            </div>
+                            <div class="ml-auto">
+                                <!-- <p class="text-primary"><i class="fa fa-plus-circle text-primary"></i>Add insurance card
+                                </p> -->
+                                <span>$[[*{#numbers.formatDecimal(price,0,'COMMA',2,'POINT')}]]</span>
+                            </div>
+                            <div class="ml-auto">
+                                <h5 class="green">$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</h5>
+                            </div>
+                        </div>
+                        <!-- <h5>$[[*{#numbers.formatDecimal(price*quantity,0,'COMMA',2,'POINT')}]]</h5> -->
+                        <!-- <p>Insurance claims and all necessary dependencies will be submitted to your insurer for the
+                            coverred
+                            portion of this order</p> -->
+                            <hr>
+
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-4 offset-md-1 mobile">
+                    <div class="py-4 d-flex justify-content-end">
+                        <h6><a href="#">Hủy và quay lại trang web</a></h6>
+                    </div>
+                    <div class="bg-light rounded d-flex flex-column">
+                        <div class="p-2 ml-3">
+                            <h4>Tóm tắt đơn hàng</h4>
+                        </div>
+                        <!-- begin invoice-header -->
+                        <div class="invoice-header">
+                            <div class="invoice-from">
+                                <small>from</small>
+                                <address class="m-t-5 m-b-5">
+                                    <strong class="text-inverse">Twitter, Inc.</strong><br>
+                                    Street Address<br>
+                                    City, Zip Code<br>
+                                    Phone: (123) 456-7890<br>
+                                    Fax: (123) 456-7890
+                                </address>
+                            </div>
+                            <div class="invoice-to">
+                                <small>to</small>
+                                <address class="m-t-5 m-b-5">
+                                    <strong class="text-inverse" th:field="*{account.username}"></strong><br>
+                                    Street Address <b th:field="*{address}"></b><br>
+                                    City, Zip Code <b th:field="*{id}"></b><br>
+                                    Date <b th:field="*{createDate}"></b><br>
+                                    Phone: (123) 456-7890<br>
+                                    Fax: (123) 456-7890
+                                </address>
+                            </div>
+                            <div class="invoice-date">
+                                <small>Invoice / July period</small>
+                                <div class="date text-inverse m-t-5">August 3,2012</div>
+                                <div class="invoice-detail">
+                                    #0000123DSS<br>
+                                    Services Product
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <link rel="stylesheet" th:href="@{/assets/pay/pay.css}">
+</body>
+
+</html>

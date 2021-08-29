@@ -1,0 +1,21 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="edit-tab" data-toggle="tab" role="tab" aria-controls="edit" data-target="#edit"
+      aria-selected="false">Edition</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="list-tab" data-toggle="tab" role="tab" data-target="#list" aria-controls="list"
+      aria-selected="true">List</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+    <div class="py-2 text-center">
+      <h2>User Management</h2>
+    </div>
+    <div ng-include="'/admin/user/form.html'"></div>
+  </div>
+  <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+    <div ng-include="'/admin/user/list.html'"></div>
+  </div>
+</div>
